@@ -1,0 +1,96 @@
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    background-color: transparent;
+    transition: background-color 0.3s ease;
+
+    &.scrolled {
+        background-color: $color-primary;
+    }
+
+    &__container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px;
+    }
+
+    &__logo {
+        font-size: 24px;
+        font-weight: bold;
+        color: $color-accent;
+        text-decoration: none;
+    }
+
+    &__nav {
+        display: flex;
+        gap: 20px;
+
+        @media (max-width: $breakpoint-tablet) {
+            display: none;
+        }
+    }
+
+    &__link {
+        color: $color-accent;
+        text-decoration: none;
+        transition: color 0.3s ease;
+
+        &:hover {
+            color: darken($color-accent, 10%);
+        }
+    }
+
+    &__mobile-toggle {
+        display: none;
+        background: none;
+        border: none;
+        color: $color-accent;
+        font-size: 24px;
+        cursor: pointer;
+
+        @media (max-width: $breakpoint-tablet) {
+            display: block;
+        }
+    }
+
+    &__mobile-menu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: $color-primary;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+
+        &.active {
+            transform: translateX(0);
+        }
+    }
+
+    &__mobile-close {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background: none;
+        border: none;
+        color: $color-accent;
+        font-size: 24px;
+        cursor: pointer;
+    }
+
+    &__mobile-nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+} 

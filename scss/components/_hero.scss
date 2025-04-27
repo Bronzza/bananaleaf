@@ -1,0 +1,172 @@
+.hero {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    
+    &__slider {
+        height: 100%;
+        width: 100%;
+        
+        .slick-slide {
+            height: 100vh;
+            position: relative;
+        }
+        
+        .slick-list,
+        .slick-track {
+            height: 100%;
+        }
+    }
+    
+    &__slide {
+        position: relative;
+        height: 100%;
+        width: 100%;
+        
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7));
+            z-index: 1;
+        }
+    }
+    
+    &__image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    
+    &__content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        color: white;
+        z-index: 2;
+        width: 100%;
+        padding: 0 $spacing-md;
+        
+        @include respond-to(tablet) {
+            padding: 0 $spacing-sm;
+        }
+    }
+    
+    &__title {
+        font-size: 48px;
+        font-weight: 700;
+        margin-bottom: $spacing-lg;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        
+        @include respond-to(tablet) {
+            font-size: 36px;
+        }
+        
+        @include respond-to(mobile) {
+            font-size: 28px;
+        }
+    }
+    
+    &__buttons {
+        @include flex(row, center, center);
+        gap: $spacing-md;
+        
+        @include respond-to(mobile) {
+            @include flex(column, center, center);
+        }
+    }
+    
+    &__button {
+        @include button($color-primary, white, $spacing-md $spacing-lg);
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        
+        &--secondary {
+            @include button(transparent, white, $spacing-md $spacing-lg);
+            border: 2px solid white;
+            
+            &:hover {
+                background-color: white;
+                color: $color-primary;
+            }
+        }
+    }
+    
+    // Slick slider custom styles
+    .slick-dots {
+        position: absolute;
+        bottom: $spacing-lg;
+        left: 50%;
+        transform: translateX(-50%);
+        @include flex(row, center, center);
+        gap: $spacing-sm;
+        z-index: 2;
+        
+        li {
+            button {
+                width: 12px;
+                height: 12px;
+                border-radius: 50%;
+                background-color: rgba(255, 255, 255, 0.5);
+                border: none;
+                padding: 0;
+                font-size: 0;
+                cursor: pointer;
+                @include transition;
+                
+                &:hover {
+                    background-color: white;
+                }
+            }
+            
+            &.slick-active {
+                button {
+                    background-color: white;
+                }
+            }
+        }
+    }
+    
+    .slick-arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 2;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 24px;
+        cursor: pointer;
+        @include transition;
+        
+        &:hover {
+            color: $color-accent;
+        }
+        
+        &.slick-prev {
+            left: $spacing-lg;
+            
+            @include respond-to(tablet) {
+                left: $spacing-md;
+            }
+        }
+        
+        &.slick-next {
+            right: $spacing-lg;
+            
+            @include respond-to(tablet) {
+                right: $spacing-md;
+            }
+        }
+    }
+} 

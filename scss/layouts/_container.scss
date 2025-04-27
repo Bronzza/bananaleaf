@@ -1,0 +1,31 @@
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+
+    &--fluid {
+        max-width: 100%;
+    }
+
+    &--narrow {
+        max-width: 800px;
+    }
+
+    &--wide {
+        max-width: 1400px;
+    }
+}
+
+// Responsive container adjustments
+@media (max-width: $breakpoint-tablet) {
+    .container {
+        padding: 0 20px;
+    }
+}
+
+@media (max-width: $breakpoint-mobile) {
+    .container {
+        padding: 0 15px;
+    }
+} 

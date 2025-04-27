@@ -1,0 +1,96 @@
+.footer {
+    background-color: $color-primary;
+    color: white;
+    padding: $spacing-xl 0;
+    
+    &__container {
+        @include container;
+        @include grid(3, $spacing-xl);
+        
+        @include respond-to(tablet) {
+            @include grid(2, $spacing-lg);
+        }
+        
+        @include respond-to(mobile) {
+            @include grid(1, $spacing-md);
+        }
+    }
+    
+    &__column {
+        @include flex(column, flex-start, flex-start);
+        gap: $spacing-md;
+    }
+    
+    &__title {
+        font-size: 20px;
+        font-weight: 600;
+        margin-bottom: $spacing-sm;
+        color: $color-accent;
+    }
+    
+    &__contact {
+        @include flex(row, flex-start, center);
+        gap: $spacing-sm;
+        color: white;
+        @include transition;
+        
+        &:hover {
+            color: $color-accent;
+        }
+    }
+    
+    &__icon {
+        font-size: 18px;
+        color: $color-accent;
+    }
+    
+    &__text {
+        font-size: 14px;
+    }
+    
+    &__social {
+        @include flex(row, flex-start, center);
+        gap: $spacing-md;
+        margin-top: $spacing-sm;
+    }
+    
+    &__social-link {
+        @include flex(row, center, center);
+        width: 36px;
+        height: 36px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        color: white;
+        font-size: 16px;
+        @include transition;
+        
+        &:hover {
+            background-color: $color-accent;
+            color: $color-primary;
+        }
+    }
+    
+    &__copyright {
+        margin-top: $spacing-xl;
+        text-align: center;
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.7);
+        padding-top: $spacing-lg;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    &__nav {
+        @include flex(column, flex-start, flex-start);
+        gap: $spacing-sm;
+    }
+    
+    &__nav-link {
+        color: white;
+        font-size: 14px;
+        @include transition;
+        
+        &:hover {
+            color: $color-accent;
+        }
+    }
+} 

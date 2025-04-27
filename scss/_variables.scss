@@ -1,0 +1,38 @@
+// Colors
+$color-primary: #4CAF50; // Leaf Green
+$color-accent: #FFF8E1; // Cream
+$color-text: #333333;
+$color-text-light: #666666;
+$color-background: #FFFFFF;
+
+// Typography
+$font-primary: 'Poppins', sans-serif;
+$font-secondary: 'Nunito', sans-serif;
+
+// Breakpoints
+$breakpoint-mobile: 320px;
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 1024px;
+$breakpoint-large: 1280px;
+
+// Container
+$maxWidthContainer: 1280;
+$maxWidth: 1920;
+
+// Transitions
+$transition-fast: 0.2s ease;
+$transition-normal: 0.3s ease;
+$transition-slow: 0.5s ease;
+
+// Spacing
+$spacing-xs: 8px;
+$spacing-sm: 16px;
+$spacing-md: 24px;
+$spacing-lg: 32px;
+$spacing-xl: 48px;
+$spacing-xxl: 64px;
+
+// Z-index layers
+$z-header: 100;
+$z-modal: 200;
+$z-overlay: 150; 

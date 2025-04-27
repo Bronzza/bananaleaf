@@ -1,0 +1,61 @@
+// Import variables
+@import '_variables';
+
+// Import mixins
+@import '_mixins';
+
+// Import base styles
+@import 'base/_reset';
+@import 'base/_typography';
+@import 'base/_utilities';
+
+// Import components
+@import 'components/_header';
+@import 'components/_hero';
+@import 'components/_benefits';
+@import 'components/_story';
+@import 'components/_admission';
+@import 'components/_footer';
+@import 'components/_modal';
+
+// Import layouts
+@import 'layouts/_container';
+@import 'layouts/_grid';
+
+// Base styles
+body {
+    font-family: $font-primary;
+    color: $color-text;
+    background-color: $color-background;
+    line-height: 1.6;
+}
+
+// Container
+.container {
+    max-width: #{$maxWidthContainer}px;
+    margin: 0 auto;
+    padding: 0 $spacing-md;
+    
+    @media (max-width: $breakpoint-tablet) {
+        padding: 0 $spacing-sm;
+    }
+}
+
+// Utility classes
+.text-center {
+    text-align: center;
+}
+
+.section {
+    padding: $spacing-xl 0;
+    
+    @media (max-width: $breakpoint-tablet) {
+        padding: $spacing-lg 0;
+    }
+}
+
+// Import Font Awesome
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css');
+
+// Import Google Fonts
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Nunito:wght@400;600;700&display=swap'); 
