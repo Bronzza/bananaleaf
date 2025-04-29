@@ -1,0 +1,75 @@
+Task:
+Create a full responsive website for "Banana Leaf International Private Child Care" using pure HTML, SCSS, and vanilla JavaScript.
+We are using Prepros for SCSS preprocessing, following the BEM methodology.
+
+General requirements:
+
+Mobile-first, fully responsive and adaptive for all screen sizes.
+Primary colors:
+Leaf Green (main tone)
+Cream (accent tone)
+Design Style: tropical jungle plants style, with optional bamboo or tropical plant decorative elements.
+Use FontAwesome for icons.
+Use sample/mock images where necessary.
+Use system default fonts, or optionally suggest clean modern fonts like Poppins or Nunito (Google Fonts).
+
+SCSS Setup:
+Apply the provided nullify/reset CSS.
+Use the provided adaptive-value mixin to ensure adaptive sizes.
+Include a _variables.scss file if needed to manage reusable SCSS variables.
+Set maximum width:
+$maxWidthContainer: 1280
+$maxWidth: 1920
+No scroll animations needed, static transitions only.
+Code must be clean, commented, and structured following BEM naming rules
+
+Website Structure:
+1. Sticky Header
+Fixed at the top.
+At page load: header is transparent (only shows navigation buttons with a thin bottom border).
+On scroll (any scroll amount): header changes to solid background color (no longer transparent).
+Navigation links inside (use basic anchor links for now).
+Smooth scroll behavior to sections.
+
+2. Hero Section (Landing Fullscreen):
+Full-screen carousel/slider using Slick Slider.
+Each slide shows a full-background image.
+Overlaid content (centered or nicely placed):
+Brand name: "Banana Leaf International Private Child Care"
+"Call Us" button (simple tel: link, e.g., tel:+123456789).
+"Apply Now" button (simple mailto: link to open default email client).
+
+3. "Why Banana Leaf Child Care" Section
+Three main asymmetric parts:
+A main image (prominent)
+A text description (main focus area)
+A block with "our benefits" (smaller blocks on the side)
+Behavior on hover:
+When user hovers over any benefit block, update (change) the image and description dynamically according to the selected benefit.
+Smooth but simple hover effects (static style, no scroll animations).
+
+4. "Our Story" Section
+Text block telling about the organization ("Who we are").
+Underneath: a photo gallery slider built with Slick Slider.
+Gallery images should be easily replaceable by the user (sample images initially).
+
+5. Admission Section
+Grid of clickable blocks/cards:
+"Prices and Fees"
+"Calendar"
+On click, each opens a frontend-only popup (simple modal window).
+Calendar shows holidays and working days (static view, no interactivity).
+
+6. Footer
+Contains:
+Contact information (phone number, address, email).
+Simple and clean layout.
+Follow general website colors (green and cream).
+
+Technical Notes:
+For email: "Apply Now" opens default email client with mailto: link. No backend form submission needed.
+For phone: "Call Us" uses tel: link.
+Popups must be pure frontend modals — no server side needed.
+Use basic slick slider options, no custom arrows needed unless you want to style them.
+Basic browser compatibility (modern browsers, no need for IE11 support).
+Include SCSS source files organized logically (ex: /scss/blocks, /scss/base, etc.)
