@@ -1,5 +1,5 @@
 .benefits {
-    padding: $spacing-xxl 0;
+    @include adaptive-value(padding, 30, 10, 0);
     background-color: $color-accent;
     
     &__container {
@@ -9,6 +9,8 @@
     &__title {
         text-align: center;
         margin-bottom: $spacing-xl;
+        @include adaptive-value(margin-bottom, 16, 10, 0);
+        @include adaptive-value(margin-top, 16, 10, 0);
     }
     
     &__content {
@@ -23,6 +25,8 @@
     &__main {
         @include flex(column, flex-start, flex-start);
         gap: $spacing-lg;
+        align-items: baseline;
+        width: 100%;
     }
     
     &__image {
@@ -33,25 +37,31 @@
         @include transition;
     }
     
-    &__description {
-        font-size: 18px;
-        line-height: 1.6;
-        color: $color-text;
-    }
-    
     &__list {
         @include flex(column, flex-start, flex-start);
         gap: $spacing-md;
+        width: 100%;
     }
     
     &__item {
-        @include flex(row, flex-start, flex-start);
+        @include flex(row, flex-start, center);
         gap: $spacing-md;
         padding: $spacing-md;
         background-color: white;
         border-radius: 8px;
         cursor: pointer;
         @include transition;
+
+        @media (min-width: $breakpoint-tablet) {
+            min-width: 320px;
+            max-width: 480px;
+            // @include adaptive-value(width, 480, 320, 0);
+            width: 100%;
+        }
+        
+        @include respond-to(tablet) {
+            width: 100%;
+        }
         
         &:hover {
             transform: translateY(-5px);
@@ -66,6 +76,10 @@
     
     &__item-icon {
         @include flex(row, center, center);
+        min-width: 48px;
+        min-height: 48px;
+        max-width: 48px;
+        max-height: 48px;
         width: 48px;
         height: 48px;
         background-color: $color-accent;
@@ -87,7 +101,7 @@
     }
     
     &__item-text {
-        font-size: 14px;
+        @include adaptive-value(font-size, 18, 15, 0);
         color: $color-text-light;
     }
     
@@ -99,6 +113,47 @@
         .benefits__item-icon {
             background-color: $color-primary;
             color: white;
+        }
+    }
+
+    .benefits__description {
+        @include adaptive-value(font-size, 24, 16, 0);
+        line-height: 1.6;
+        margin: 25px 5px;
+        text-align: center;
+        padding: 25px;
+        background: linear-gradient(135deg, rgba($color-primary, 0.05) 0%, rgba($color-primary, 0.15) 100%);
+        border-radius: 15px;
+        border-left: 4px solid $color-primary;
+        box-shadow: 0 4px 15px rgba($color-primary, 0.1);
+        position: relative;
+        overflow: hidden;
+        color: $color-primary;
+        font-weight: 500;
+        letter-spacing: 0.3px;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba($color-primary, 0.03), transparent);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(100%);
+            }
+        }
+        
+        @include respond-to(tablet) {
+            display: none;
         }
     }
 } 

@@ -5,28 +5,48 @@ let lastScroll = 0;
 window.addEventListener('scroll', () => {
     const currentScroll = window.pageYOffset;
     
-    if (currentScroll > 0) {
-        header.classList.remove('header--transparent');
-        header.classList.add('header--solid');
+    if (currentScroll > 50) {
+        header.classList.add('scrolled');
     } else {
-        header.classList.remove('header--solid');
-        header.classList.add('header--transparent');
+        header.classList.remove('scrolled');
     }
     
     lastScroll = currentScroll;
 });
 
-// Mobile menu toggle
-const mobileToggle = document.querySelector('.header__mobile-toggle');
-const mobileMenu = document.querySelector('.header__mobile-menu');
-const mobileClose = document.querySelector('.header__mobile-close');
+// Mobile menu functionality
+const burger = document.querySelector('.header__burger');
+const body = document.body;
 
-mobileToggle.addEventListener('click', () => {
-    mobileMenu.classList.add('header__mobile-menu--active');
+burger.addEventListener('click', () => {
+    body.classList.toggle('menu-open');
+    body.style.overflow = body.classList.contains('menu-open') ? 'hidden' : '';
 });
 
-mobileClose.addEventListener('click', () => {
-    mobileMenu.classList.remove('header__mobile-menu--active');
+// Close mobile menu when clicking on links
+document.querySelectorAll('.header__link').forEach(link => {
+    link.addEventListener('click', () => {
+        body.classList.remove('menu-open');
+        body.style.overflow = '';
+    });
+});
+
+// Close mobile menu when clicking outside
+document.addEventListener('click', (e) => {
+    if (body.classList.contains('menu-open') && 
+        !e.target.closest('.header__nav') && 
+        !e.target.closest('.header__burger')) {
+        body.classList.remove('menu-open');
+        body.style.overflow = '';
+    }
+});
+
+// Close mobile menu on escape key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && body.classList.contains('menu-open')) {
+        body.classList.remove('menu-open');
+        body.style.overflow = '';
+    }
 });
 
 // Smooth scroll for anchor links
@@ -39,9 +59,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             target.scrollIntoView({
                 behavior: 'smooth'
             });
-            
-            // Close mobile menu if open
-            mobileMenu.classList.remove('header__mobile-menu--active');
         }
     });
 });
@@ -55,8 +72,9 @@ $('.hero__slider').slick({
     fade: true,
     cssEase: 'linear',
     autoplay: true,
-    autoplaySpeed: 5000,
-    pauseOnHover: true
+    autoplaySpeed: 4000,
+    pauseOnHover: false,
+    pauseOnFocus: false
 });
 
 // Story gallery slider initialization
@@ -70,6 +88,8 @@ $('.story__slider').slick({
     autoplay: true,
     autoplaySpeed: 3000,
     pauseOnHover: true,
+    prevArrow: '<button class="slick-prev" type="button"></button>',
+    nextArrow: '<button class="slick-next" type="button"></button>',
     responsive: [
         {
             breakpoint: 1024,
@@ -94,16 +114,16 @@ const benefitDescription = document.querySelector('.benefits__description');
 // Sample data for benefits
 const benefitsData = {
     'Nurturing Environment': {
-        image: 'images/benefit-nurturing.jpg',
-        description: 'Our child care center provides a nurturing environment where children can learn, grow, and develop their full potential.'
+        image: 'images/benefits/800_600_0.jpg',
+        description: 'Our child care center provides a nurturing environment where children can learn, grow, and develop their full potential. Our child care center provides a nurturing environment where children can learn, grow, and develop their full potential.'
     },
     'Quality Education': {
-        image: 'images/benefit-education.jpg',
-        description: 'We offer quality early learning programs designed to help children develop essential skills through play-based learning.'
+        image: 'images/benefits/800_600_1.jpg',
+        description: 'We offer quality early learning programs designed to help children develop essential skills through play-based learning. We offer quality early learning programs designed to help children develop essential skills through play-based learning.'
     },
     'Experienced Staff': {
-        image: 'images/benefit-staff.jpg',
-        description: 'Our team of experienced and qualified professionals is dedicated to providing the best care and education for your child.'
+        image: 'images/benefits/800_600_3.jpg',
+        description: 'Our team of experienced and qualified professionals is dedicated to providing the best care and education for your child. Our team of experienced and qualified professionals is dedicated to providing the best care and education for your child.'
     }
 };
 

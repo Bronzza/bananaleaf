@@ -90,6 +90,10 @@
         font-weight: 600;
         text-transform: uppercase;
         letter-spacing: 1px;
+        @include adaptive-value(min-width, 160, 120, 0);
+
+        text-align: center;
+        white-space: nowrap;
         
         &--secondary {
             @include button(transparent, white, $spacing-md $spacing-lg);
@@ -142,19 +146,38 @@
         top: 50%;
         transform: translateY(-50%);
         z-index: 2;
-        background: none;
+        width: 40px;
+        height: 40px;
+        background-color: rgba($color-primary, 0.3);
         border: none;
+        border-radius: 50%;
         color: white;
-        font-size: 24px;
+        font-size: 0;
         cursor: pointer;
         @include transition;
+        display: block !important;
+        
+        &:before {
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            font-size: 20px;
+            line-height: 40px;
+            opacity: 1;
+            display: block;
+            text-align: center;
+        }
         
         &:hover {
-            color: $color-accent;
+            background-color: $color-primary;
+            color: white;
         }
         
         &.slick-prev {
             left: $spacing-lg;
+            
+            &:before {
+                content: "\f104"; // Font Awesome chevron-left
+            }
             
             @include respond-to(tablet) {
                 left: $spacing-md;
@@ -163,6 +186,10 @@
         
         &.slick-next {
             right: $spacing-lg;
+            
+            &:before {
+                content: "\f105"; // Font Awesome chevron-right
+            }
             
             @include respond-to(tablet) {
                 right: $spacing-md;

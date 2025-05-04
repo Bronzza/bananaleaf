@@ -11,7 +11,7 @@
 
 // Import components
 @import 'components/_header';
-@import 'components/_hero';
+@import 'components/_hero'; 
 @import 'components/_benefits';
 @import 'components/_story';
 @import 'components/_admission';
@@ -32,7 +32,7 @@ body {
 
 // Container
 .container {
-    max-width: #{$maxWidthContainer}px;
+    max-width: 1280px;
     margin: 0 auto;
     padding: 0 $spacing-md;
     
@@ -47,7 +47,7 @@ body {
 }
 
 .section {
-    padding: $spacing-xl 0;
+    padding: $spacing-xl 0; 
     
     @media (max-width: $breakpoint-tablet) {
         padding: $spacing-lg 0;

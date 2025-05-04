@@ -1,5 +1,5 @@
 .story {
-    padding: $spacing-xxl 0;
+    @include adaptive-value(padding, 24, 8, 0);
     
     &__container {
         @include container;
@@ -8,11 +8,12 @@
     &__title {
         text-align: center;
         margin-bottom: $spacing-xl;
+        @include adaptive-value(margin-bottom, 16, 10, 0);
+        @include adaptive-value(margin-top, 16, 10, 0);
     }
     
     &__content {
         @include flex(column, flex-start, center);
-        gap: $spacing-xl;
     }
     
     &__text {
@@ -62,7 +63,7 @@
     .slick-dots {
         @include flex(row, center, center);
         gap: $spacing-sm;
-        margin-top: $spacing-lg;
+        margin-top: $spacing-xxl;
         
         li {
             button {
@@ -75,6 +76,11 @@
                 font-size: 0;
                 cursor: pointer;
                 @include transition;
+                position: relative;
+                
+                &:before {
+                    display: none; // Hide the default dot character
+                }
                 
                 &:hover {
                     background-color: rgba($color-primary, 0.5);
@@ -94,23 +100,53 @@
         top: 50%;
         transform: translateY(-50%);
         z-index: 2;
-        background: none;
+        width: 40px;
+        height: 40px;
+        background-color: rgba($color-primary, 0.1);
         border: none;
+        border-radius: 50%;
         color: $color-primary;
-        font-size: 24px;
+        font-size: 0;
         cursor: pointer;
         @include transition;
         
+        &:before {
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            font-size: 20px;
+            line-height: 1;
+            opacity: 1;
+        }
+        
         &:hover {
-            color: darken($color-primary, 10%);
+            background-color: $color-primary;
+            color: white;
         }
         
         &.slick-prev {
-            left: 0;
+            left: -50px;
+            
+            &:before {
+                content: "\f104"; // Font Awesome chevron-left
+            }
         }
         
         &.slick-next {
-            right: 0;
+            right: -50px;
+            
+            &:before {
+                content: "\f105"; // Font Awesome chevron-right
+            }
+        }
+        
+        @include respond-to(tablet) {
+            &.slick-prev {
+                left: -20px;
+            }
+            
+            &.slick-next {
+                right: -20px;
+            }
         }
     }
 } 
