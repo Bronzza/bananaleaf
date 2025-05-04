@@ -157,7 +157,7 @@ modalTriggers.forEach(trigger => {
         const modal = document.getElementById(`${modalId}-modal`);
         
         if (modal) {
-            modal.classList.add('modal--active');
+            modal.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
     });
@@ -166,7 +166,7 @@ modalTriggers.forEach(trigger => {
 modalCloses.forEach(close => {
     close.addEventListener('click', () => {
         const modal = close.closest('.modal');
-        modal.classList.remove('modal--active');
+        modal.classList.remove('active');
         document.body.style.overflow = '';
     });
 });
@@ -175,7 +175,7 @@ modalCloses.forEach(close => {
 modals.forEach(modal => {
     modal.addEventListener('click', (e) => {
         if (e.target === modal) {
-            modal.classList.remove('modal--active');
+            modal.classList.remove('active');
             document.body.style.overflow = '';
         }
     });
@@ -185,7 +185,7 @@ modals.forEach(modal => {
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
         modals.forEach(modal => {
-            modal.classList.remove('modal--active');
+            modal.classList.remove('active');
             document.body.style.overflow = '';
         });
     }
