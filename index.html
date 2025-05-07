@@ -38,7 +38,11 @@
     <section class="hero">
         <div class="hero__slider">
             <div class="hero__slide">
-                <img src="images/hero/main-1.png" alt="Happy children playing" class="hero__image">
+                <picture>
+                    <source media="(max-width: 768px)" srcset="images/hero/mobile/main-1-mobile.png">
+                    <source media="(min-width: 769px)" srcset="images/hero/main-1.png">
+                    <img src="images/hero/main-1.png" alt="Happy children playing" class="hero__image">
+                </picture>
                 <div class="hero__content">
                     <h1 class="hero__title">Banana Leaf Samui International Private Child Care</h1>
                     <div class="hero__buttons">
@@ -48,7 +52,11 @@
                 </div>
             </div>
             <div class="hero__slide">
-                <img src="images/hero/main-2.png" alt="Learning environment" class="hero__image">
+                <picture>
+                    <source media="(max-width: 768px)" srcset="images/hero/mobile/main-2-mobile.png">
+                    <source media="(min-width: 769px)" srcset="images/hero/main-2.png">
+                    <img src="images/hero/main-2.png" alt="Learning environment" class="hero__image">
+                </picture>
                 <div class="hero__content">
                     <h1 class="hero__title">Banana Leaf Samui International Private Child Care</h1>
                     <div class="hero__buttons">
@@ -58,7 +66,11 @@
                 </div>
             </div>
             <div class="hero__slide">
-                <img src="images/hero/main-3.png" alt="Learning environment" class="hero__image">
+                <picture>
+                    <source media="(max-width: 768px)" srcset="images/hero/mobile/main-1-mobile.png">
+                    <source media="(min-width: 769px)" srcset="images/hero/main-3.png">
+                    <img src="images/hero/main-3.png" alt="Learning environment" class="hero__image">
+                </picture>
                 <div class="hero__content">
                     <h2 class="hero__title">Banana Leaf Samui International Private Child Care</h2>                  
                     <div class="hero__buttons">
@@ -68,7 +80,11 @@
                 </div>
             </div>
             <div class="hero__slide">
-                <img src="images/hero/main-4.png" alt="Learning environment" class="hero__image">
+                <picture>
+                    <source media="(max-width: 768px)" srcset="images/hero/mobile/main-2-mobile.png">
+                    <source media="(min-width: 769px)" srcset="images/hero/main-4.png">
+                    <img src="images/hero/main-4.png" alt="Learning environment" class="hero__image">
+                </picture>
                 <div class="hero__content">
                     <h1 class="hero__title">Banana Leaf Samui International Private Child Care</h1>
                     <div class="hero__buttons">
@@ -95,7 +111,7 @@
                         </div>
                         <div class="benefits__item-content">
                             <h3 class="benefits__item-title">Nurturing Environment</h3>
-                            <p class="benefits__item-text">Safe and caring atmosphere for your child's growth</p>
+                            <p class="benefits__item-text">Young Minds Blossom Safely and Joyfully</p>
                         </div>
                     </div>
                     <div class="benefits__item">
@@ -104,7 +120,7 @@
                         </div>
                         <div class="benefits__item-content">
                             <h3 class="benefits__item-title">Quality Education</h3>
-                            <p class="benefits__item-text">Early learning programs for all ages</p>
+                            <p class="benefits__item-text">Inspiring Lifelong Learning from the Very Start</p>
                         </div>
                     </div>
                     <div class="benefits__item">
@@ -113,7 +129,7 @@
                         </div>
                         <div class="benefits__item-content">
                             <h3 class="benefits__item-title">Experienced Staff</h3>
-                            <p class="benefits__item-text">Qualified and caring professionals</p>
+                            <p class="benefits__item-text">Passionate Educators Who Truly Care</p>
                         </div>
                     </div>
                      
@@ -130,6 +146,7 @@
             <h2 class="story__title">Our Story</h2>
             <div class="story__content">
                 <p class="story__text">Banana Leaf International Private Child Care was founded with a vision to provide exceptional early childhood education in a warm and nurturing environment. Our experienced team of educators is dedicated to helping children develop their full potential through play-based learning and personalized attention.</p>
+                <p class="story__text story__text-desktop">Our programs emphasize hands-on discovery, creativity, and emotional well-being. From engaging sensory play to outdoor exploration and themed learning, every activity is thoughtfully planned to support balanced growth. We also value strong partnerships with families, working closely together to ensure each child feels seen, supported, and celebrated every step of the way.</p>
                 <div class="story__gallery">
                     <div class="story__slider">
                         <div class="story__slide">
@@ -295,33 +312,50 @@
                 <i class="fas fa-times"></i>
             </button>
             <h3 class="modal__title">Calendar</h3>
-            <table class="modal__calendar">
-                <thead>
-                    <tr>
-                        <th class="modal__calendar-header">Monday</th>
-                        <th class="modal__calendar-header">Tuesday</th>
-                        <th class="modal__calendar-header">Wednesday</th>
-                        <th class="modal__calendar-header">Thursday</th>
-                        <th class="modal__calendar-header">Friday</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="modal__calendar-day">Open</td>
-                        <td class="modal__calendar-day">Open</td>
-                        <td class="modal__calendar-day">Open</td>
-                        <td class="modal__calendar-day">Open</td>
-                        <td class="modal__calendar-day">Open</td>
-                    </tr>
-                    <tr>
-                        <td class="modal__calendar-day modal__calendar-day--holiday">Holiday</td>
-                        <td class="modal__calendar-day">Open</td>
-                        <td class="modal__calendar-day">Open</td>
-                        <td class="modal__calendar-day">Open</td>
-                        <td class="modal__calendar-day">Open</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="calendar-tabs">
+                <button class="calendar-tab active" data-calendar="quarter">
+                    <i class="fas fa-calendar-week"></i>
+                    Quarter
+                </button>
+                <button class="calendar-tab" data-calendar="year">
+                    <i class="fas fa-calendar"></i>
+                    Year
+                </button>
+            </div>
+            <div class="calendar-views">
+                <div class="calendar-view active" id="quarter-view">
+                    <div class="quarter-navigation">
+                        <button class="quarter-nav prev">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <h4 class="quarter-title">Q1 2025</h4>
+                        <button class="quarter-nav next">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                    <div class="quarter-slider">
+                        <div class="quarter-slide active" data-quarter="1">
+                            <img src="images/modals/2025_calendar.png" alt="Q1 2025 Calendar" class="calendar-image">
+                        </div>
+                        <div class="quarter-slide" data-quarter="2">
+                            <img src="images/modals/2025_calendar.png" alt="Q2 2025 Calendar" class="calendar-image">
+                        </div>
+                        <div class="quarter-slide" data-quarter="3">
+                            <img src="images/modals/2025_calendar.png" alt="Q3 2025 Calendar" class="calendar-image">
+                        </div>
+                        <div class="quarter-slide" data-quarter="4">
+                            <img src="images/modals/2025_calendar.png" alt="Q4 2025 Calendar" class="calendar-image">
+                        </div>
+                    </div>
+                </div>
+                <div class="calendar-view" id="year-view">
+                    <div class="year-warning">
+                        <i class="fas fa-mobile-alt"></i>
+                        <p>For better visibility on mobile devices, please use the Quarter view</p>
+                    </div>
+                    <img src="images/modals/2025_calendar.png" alt="Year Calendar" class="calendar-image">
+                </div>
+            </div>
         </div>
     </div>
 

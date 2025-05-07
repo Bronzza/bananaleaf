@@ -17,12 +17,25 @@
     }
     
     &__text {
-        max-width: 800px;
+        max-width: 1200px;
         margin: 0 auto;
         text-align: center;
         font-size: 18px;
         line-height: 1.8;
         color: $color-text;
+        padding: 0 $spacing-md;
+        
+        &:nth-child(2) {
+            margin-top: $spacing-md;
+        }
+        
+        &-desktop {
+            display: none;
+            
+            @media (min-width: $breakpoint-desktop) {
+                display: block;
+            }
+        }
     }
     
     &__gallery {

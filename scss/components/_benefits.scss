@@ -14,7 +14,7 @@
     
     &__content {
         @include grid(2, $spacing-xl);
-        align-items: start;
+        align-items: center;
         
         @include respond-to(tablet) {
             @include grid(1, $spacing-lg);
@@ -22,7 +22,7 @@
     }
     
     &__main {
-        @include flex(column, flex-start, flex-start);
+        @include flex(column, center, flex-start);
         gap: $spacing-lg;
         align-items: baseline;
         width: 100%;
@@ -44,7 +44,7 @@
     
     &__item {
         @include flex(row, flex-start, center);
-        gap: $spacing-md;
+        gap: 12px;
         padding: $spacing-md;
         background-color: white;
         border-radius: 8px;
@@ -53,7 +53,7 @@
 
         @media (min-width: $breakpoint-tablet) {
             min-width: 320px;
-            max-width: 480px;
+            max-width: 580px;
             // @include adaptive-value(width, 480, 320, 0);
             width: 100%;
         }
@@ -116,7 +116,7 @@
     }
 
     .benefits__description {
-        @include adaptive-value(font-size, 24, 16, 0);
+        @include adaptive-value(font-size, 20, 12, 0);
         line-height: 1.6;
         margin: 25px 5px;
         @include adaptive-value(margin-bottom, 12, 8, 0);
