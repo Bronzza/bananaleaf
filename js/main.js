@@ -72,7 +72,7 @@ $('.hero__slider').slick({
     fade: true,
     cssEase: 'linear',
     autoplay: true,
-    autoplaySpeed: 4000,
+    autoplaySpeed: 7000,
     pauseOnHover: false,
     pauseOnFocus: false
 });
@@ -115,15 +115,15 @@ const benefitDescription = document.querySelector('.benefits__description');
 const benefitsData = {
     'Nurturing Environment': {
         image: 'images/benefits/800_600_0.jpg',
-        description: 'Our child care center provides a nurturing environment where children can learn, grow, and develop their full potential. Our child care center provides a nurturing environment where children can learn, grow, and develop their full potential.'
+        description: 'At Banana Leaf Childcare, children thrive in a secure and joyful space designed to support all aspects of development. Through sensory play, outdoor activities, and a nurturing atmosphere, we help young minds grow confidently—emotionally, physically, and intellectually—from ages 1.5 to 5 years old.'
     },
     'Quality Education': {
         image: 'images/benefits/800_600_1.jpg',
-        description: 'We offer quality early learning programs designed to help children develop essential skills through play-based learning. We offer quality early learning programs designed to help children develop essential skills through play-based learning.'
+        description: 'Our early learning program is crafted to spark curiosity and creativity in every child. With hands-on sensory exploration, playful learning, and age-appropriate educational activities, we guide children from their earliest steps into a love of learning that lasts a lifetime.'
     },
     'Experienced Staff': {
         image: 'images/benefits/800_600_3.jpg',
-        description: 'Our team of experienced and qualified professionals is dedicated to providing the best care and education for your child. Our team of experienced and qualified professionals is dedicated to providing the best care and education for your child.'
+        description: 'Our team of qualified and attentive educators is dedicated to each child’s unique journey. Combining professional experience with heartfelt care, we create a warm, structured environment enriched with sensory play and individual attention to support healthy growth and joyful discovery.'
     }
 };
 
@@ -189,4 +189,59 @@ document.addEventListener('keydown', (e) => {
             document.body.style.overflow = '';
         });
     }
-}); 
+});
+
+// Calendar functionality
+const calendarTabs = document.querySelectorAll('.calendar-tab');
+const calendarViews = document.querySelectorAll('.calendar-view');
+const quarterSlides = document.querySelectorAll('.quarter-slide');
+const quarterTitle = document.querySelector('.quarter-title');
+const prevQuarter = document.querySelector('.quarter-nav.prev');
+const nextQuarter = document.querySelector('.quarter-nav.next');
+
+let currentQuarter = 1;
+
+// Tab switching
+calendarTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+        calendarTabs.forEach(t => t.classList.remove('active'));
+        calendarViews.forEach(v => v.classList.remove('active'));
+        
+        tab.classList.add('active');
+        const viewId = `${tab.dataset.calendar}-view`;
+        document.getElementById(viewId).classList.add('active');
+    });
+});
+
+// Quarter navigation
+function updateQuarterView() {
+    quarterSlides.forEach(slide => {
+        slide.classList.remove('active');
+        if (parseInt(slide.dataset.quarter) === currentQuarter) {
+            slide.classList.add('active');
+        }
+    });
+
+    quarterTitle.textContent = `Q${currentQuarter} 2025`;
+    
+    // Update navigation buttons
+    prevQuarter.classList.toggle('disabled', currentQuarter === 1);
+    nextQuarter.classList.toggle('disabled', currentQuarter === 4);
+}
+
+prevQuarter.addEventListener('click', () => {
+    if (currentQuarter > 1) {
+        currentQuarter--;
+        updateQuarterView();
+    }
+});
+
+nextQuarter.addEventListener('click', () => {
+    if (currentQuarter < 4) {
+        currentQuarter++;
+        updateQuarterView();
+    }
+});
+
+// Initialize quarter view
+updateQuarterView(); 
