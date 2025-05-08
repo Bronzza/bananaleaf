@@ -105,14 +105,45 @@
             overflow: hidden;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
             margin-bottom: $spacing-lg;
+            table-layout: fixed;
 
             th, td {
                 padding: $spacing-md;
                 text-align: left;
                 border-bottom: 1px solid rgba($color-primary, 0.1);
+                
+                &:first-child {
+                    width: 30%;
+                }
 
                 &:not(:first-child) {
                     text-align: center;
+                    width: calc(70% / 3);
+                }
+
+                // Hide last column on mobile
+                &:last-child {
+                    @include respond-to(tablet) {
+                        display: none;
+                    }
+                }
+            }
+
+            // Adjust remaining columns width on mobile
+            @include respond-to(tablet) {
+                th, td {
+                    &:first-child {
+                        width: 40%;
+                    }
+                    &:not(:first-child):not(:last-child) {
+                        width: 30%;
+                    }
+                }
+            }
+
+            td:not(:first-child) {
+                > div {
+                    margin: 4px 0;
                 }
             }
 
@@ -123,16 +154,86 @@
                 text-transform: uppercase;
                 font-size: 14px;
                 letter-spacing: 0.5px;
+                padding: $spacing-sm $spacing-md;
+                text-align: center;
 
                 &:first-child {
                     background-color: transparent;
+                    text-align: left;
                 }
+
+                .time-info {
+                    font-size: 12px;
+                    font-weight: normal;
+                    text-transform: none;
+                    margin-top: 2px;
+                    opacity: 0.9;
+                    letter-spacing: 0;
+                    text-align: center;
+                    display: block;
+                }
+            }
+
+            .row-label {
+                font-size: 14px;
             }
 
             td {
                 &:first-child {
                     font-weight: 600;
                     color: $color-primary;
+
+                    .tooltip {
+                        display: inline-flex;
+                        align-items: center;
+                        margin-left: 8px;
+                        position: relative;
+                        cursor: help;
+
+                        i {
+                            color: rgba($color-primary, 0.6);
+                            font-size: 16px;
+                            transition: color 0.3s ease;
+                        }
+
+                        &:hover {
+                            i {
+                                color: $color-primary;
+                            }
+
+                            &::after {
+                                content: attr(data-tooltip);
+                                position: absolute;
+                                bottom: calc(100% + 45px);
+                                left: 50%;
+                                transform: translateX(calc(-50% + 100px));
+                                background-color: rgba($color-primary, 0.95);
+                                color: white;
+                                padding: 8px 12px;
+                                border-radius: 6px;
+                                font-size: 16px;
+                                font-weight: normal;
+                                white-space: normal;
+                                width: max-content;
+                                max-width: 250px;
+                                line-height: 1.4;
+                                z-index: 10;
+                                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+
+                                // Arrow
+                                &::before {
+                                    content: '';
+                                    position: absolute;
+                                    top: 100%;
+                                    left: 50%;
+                                    transform: translateX(-50%);
+                                    border: 6px solid transparent;
+                                    border-top-color: rgba($color-primary, 0.95);
+                                    height: 12px;
+                                }
+                            }
+                        }
+                    }
                 }
             }
 
