@@ -9,6 +9,7 @@
         display: grid;
         grid-template-columns: 3fr 1fr;
         gap: $spacing-xl;
+        @include adaptive-value(margin-top, 16, 12, 0);
         
         @include respond-to(tablet) {
             grid-template-columns: 1fr;

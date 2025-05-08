@@ -4,6 +4,7 @@
     
     &__container {
         @include container;
+        @include adaptive-value(margin-bottom, 20, 10, 0);
     }
     
     &__title {
@@ -16,6 +17,12 @@
         @include grid(2, $spacing-lg);
         max-width: 800px;
         margin: 0 auto;
+        
+        @media (min-width: $breakpoint-desktop) {
+            max-width: 1000px;
+            justify-content: space-between;
+            gap: $spacing-xxl;
+        }
         
         @include respond-to(tablet) {
             @include grid(1, $spacing-md);
@@ -31,6 +38,7 @@
         @include flex(column, center, center);
         gap: $spacing-md;
         text-align: center;
+        @include adaptive-value(margin-top, 16, 8, 0);
         
         &:hover {
             transform: translateY(-5px);
