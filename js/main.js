@@ -194,12 +194,12 @@ document.addEventListener('keydown', (e) => {
 // Calendar functionality
 const calendarTabs = document.querySelectorAll('.calendar-tab');
 const calendarViews = document.querySelectorAll('.calendar-view');
-const quarterSlides = document.querySelectorAll('.quarter-slide');
-const quarterTitle = document.querySelector('.quarter-title');
-const prevQuarter = document.querySelector('.quarter-nav.prev');
-const nextQuarter = document.querySelector('.quarter-nav.next');
+const halfYearSlides = document.querySelectorAll('.quarter-slide');
+const halfYearTitle = document.querySelector('.quarter-title');
+const prevHalf = document.querySelector('.quarter-nav.prev');
+const nextHalf = document.querySelector('.quarter-nav.next');
 
-let currentQuarter = 1;
+let currentHalf = 1;
 
 // Tab switching
 calendarTabs.forEach(tab => {
@@ -213,35 +213,35 @@ calendarTabs.forEach(tab => {
     });
 });
 
-// Quarter navigation
-function updateQuarterView() {
-    quarterSlides.forEach(slide => {
+// Half-year navigation
+function updateHalfYearView() {
+    halfYearSlides.forEach(slide => {
         slide.classList.remove('active');
-        if (parseInt(slide.dataset.quarter) === currentQuarter) {
+        if (parseInt(slide.dataset.half) === currentHalf) {
             slide.classList.add('active');
         }
     });
 
-    quarterTitle.textContent = `Q${currentQuarter} 2025`;
+    halfYearTitle.textContent = `Term ${currentHalf} 2025`;
     
     // Update navigation buttons
-    prevQuarter.classList.toggle('disabled', currentQuarter === 1);
-    nextQuarter.classList.toggle('disabled', currentQuarter === 4);
+    prevHalf.classList.toggle('disabled', currentHalf === 1);
+    nextHalf.classList.toggle('disabled', currentHalf === 2);
 }
 
-prevQuarter.addEventListener('click', () => {
-    if (currentQuarter > 1) {
-        currentQuarter--;
-        updateQuarterView();
+prevHalf.addEventListener('click', () => {
+    if (currentHalf > 1) {
+        currentHalf--;
+        updateHalfYearView();
     }
 });
 
-nextQuarter.addEventListener('click', () => {
-    if (currentQuarter < 4) {
-        currentQuarter++;
-        updateQuarterView();
+nextHalf.addEventListener('click', () => {
+    if (currentHalf < 2) {
+        currentHalf++;
+        updateHalfYearView();
     }
 });
 
-// Initialize quarter view
-updateQuarterView(); 
+// Initialize half-year view
+updateHalfYearView(); 

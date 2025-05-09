@@ -379,9 +379,9 @@
             </button>
             <h3 class="modal__title">Calendar</h3>
             <div class="calendar-tabs">
-                <button class="calendar-tab active" data-calendar="quarter">
+                <button class="calendar-tab active" data-calendar="half-year">
                     <i class="fas fa-calendar-week"></i>
-                    Quarter
+                    Terms
                 </button>
                 <button class="calendar-tab" data-calendar="year">
                     <i class="fas fa-calendar"></i>
@@ -389,35 +389,37 @@
                 </button>
             </div>
             <div class="calendar-views">
-                <div class="calendar-view active" id="quarter-view">
+                <div class="calendar-view active" id="half-year-view">
                     <div class="quarter-navigation">
                         <button class="quarter-nav prev">
                             <i class="fas fa-chevron-left"></i>
                         </button>
-                        <h4 class="quarter-title">Q1 2025</h4>
+                        <h4 class="quarter-title">Term 1 2025</h4>
                         <button class="quarter-nav next">
                             <i class="fas fa-chevron-right"></i>
                         </button>
                     </div>
                     <div class="quarter-slider">
-                        <div class="quarter-slide active" data-quarter="1">
-                            <img src="images/modals/2025_calendar.png" alt="Q1 2025 Calendar" class="calendar-image">
+                        <div class="quarter-slide active" data-half="1">
+                            <picture>
+                                <source media="(max-width: 768px)" srcset="images/modals/calendar/mobile/calendar_hy_1_mobile.png">
+                                <source media="(min-width: 769px)" srcset="images/modals/calendar/calendar_hy_1.png">
+                                <img src="images/modals/calendar/calendar_hy_1.png" alt="Term 1 2025 Calendar" class="calendar-image">
+                            </picture>
                         </div>
-                        <div class="quarter-slide" data-quarter="2">
-                            <img src="images/modals/2025_calendar.png" alt="Q2 2025 Calendar" class="calendar-image">
-                        </div>
-                        <div class="quarter-slide" data-quarter="3">
-                            <img src="images/modals/2025_calendar.png" alt="Q3 2025 Calendar" class="calendar-image">
-                        </div>
-                        <div class="quarter-slide" data-quarter="4">
-                            <img src="images/modals/2025_calendar.png" alt="Q4 2025 Calendar" class="calendar-image">
+                        <div class="quarter-slide" data-half="2">
+                            <picture>
+                                <source media="(max-width: 768px)" srcset="images/modals/calendar/mobile/calendar_hy_2_mobile.png">
+                                <source media="(min-width: 769px)" srcset="images/modals/calendar/calendar_hy_2.png">
+                                <img src="images/modals/calendar/calendar_hy_2.png" alt="Term 2 2025 Calendar" class="calendar-image">
+                            </picture>
                         </div>
                     </div>
                 </div>
                 <div class="calendar-view" id="year-view">
                     <div class="year-warning">
                         <i class="fas fa-mobile-alt"></i>
-                        <p>For better visibility on mobile devices, please use the Quarter view</p>
+                        <p>For better visibility on mobile devices, please use the Half-Year view</p>
                     </div>
                     <img src="images/modals/2025_calendar.png" alt="Year Calendar" class="calendar-image">
                 </div>
