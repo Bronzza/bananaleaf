@@ -123,25 +123,70 @@ const benefitsData = {
     },
     'Experienced Staff': {
         image: 'images/benefits/800_600_3.jpg',
-        description: 'Our team of qualified and attentive educators is dedicated to each child’s unique journey. Combining professional experience with heartfelt care, we create a warm, structured environment enriched with sensory play and individual attention to support healthy growth and joyful discovery.'
+        description: 'Our team of qualified and attentive educators is dedicated to each child\'s unique journey. Combining professional experience with heartfelt care, we create a warm, structured environment enriched with sensory play and individual attention to support healthy growth and joyful discovery.'
     }
 };
 
-benefitItems.forEach(item => {
+let benefitsInterval;
+let currentBenefitIndex = 0;
+
+function updateActiveBenefit(index) {
+    // Remove active class from all items
+    benefitItems.forEach(i => i.classList.remove('benefits__item--active'));
+    
+    // Add active class to current item
+    benefitItems[index].classList.add('benefits__item--active');
+    
+    // Get the benefit title
+    const title = benefitItems[index].querySelector('.benefits__item-title').textContent;
+    
+    // Update image and description
+    if (benefitsData[title]) {
+        benefitImage.src = benefitsData[title].image;
+        benefitDescription.textContent = benefitsData[title].description;
+    }
+}
+
+function startBenefitsAutoRotation() {
+    if (window.innerWidth <= 768) { // Mobile breakpoint
+        benefitsInterval = setInterval(() => {
+            currentBenefitIndex = (currentBenefitIndex + 1) % benefitItems.length;
+            updateActiveBenefit(currentBenefitIndex);
+        }, 5000);
+    }
+}
+
+function stopBenefitsAutoRotation() {
+    if (benefitsInterval) {
+        clearInterval(benefitsInterval);
+        benefitsInterval = null;
+    }
+}
+
+// Handle window resize
+window.addEventListener('resize', () => {
+    if (window.innerWidth <= 768) {
+        startBenefitsAutoRotation();
+    } else {
+        stopBenefitsAutoRotation();
+    }
+});
+
+// Initialize auto-rotation on page load if on mobile
+if (window.innerWidth <= 768) {
+    startBenefitsAutoRotation();
+}
+
+benefitItems.forEach((item, index) => {
     item.addEventListener('mouseenter', () => {
-        // Remove active class from all items
-        benefitItems.forEach(i => i.classList.remove('benefits__item--active'));
-        
-        // Add active class to current item
-        item.classList.add('benefits__item--active');
-        
-        // Get the benefit title
-        const title = item.querySelector('.benefits__item-title').textContent;
-        
-        // Update image and description
-        if (benefitsData[title]) {
-            benefitImage.src = benefitsData[title].image;
-            benefitDescription.textContent = benefitsData[title].description;
+        stopBenefitsAutoRotation();
+        currentBenefitIndex = index;
+        updateActiveBenefit(index);
+    });
+
+    item.addEventListener('mouseleave', () => {
+        if (window.innerWidth <= 768) {
+            startBenefitsAutoRotation();
         }
     });
 });
