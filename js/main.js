@@ -149,6 +149,8 @@ function updateActiveBenefit(index) {
 
 function startBenefitsAutoRotation() {
     if (window.innerWidth <= 768) { // Mobile breakpoint
+        stopBenefitsAutoRotation(); // Clear any existing interval first
+        updateActiveBenefit(currentBenefitIndex); // Ensure current slide is properly shown
         benefitsInterval = setInterval(() => {
             currentBenefitIndex = (currentBenefitIndex + 1) % benefitItems.length;
             updateActiveBenefit(currentBenefitIndex);
@@ -186,6 +188,7 @@ benefitItems.forEach((item, index) => {
 
     item.addEventListener('mouseleave', () => {
         if (window.innerWidth <= 768) {
+            currentBenefitIndex = index; // Set current index to the hovered item
             startBenefitsAutoRotation();
         }
     });
